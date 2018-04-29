@@ -1,0 +1,35 @@
+page-login{
+
+  ion-grid {
+    height: 100%;
+    justify-content: center;
+    .loginBox{
+      background-image: url('../../assets/imgs/blur-bg-blurred.jpg');
+      mat-card{
+        background: transparent;
+        // background: rgba(0,0,0,.55);
+        .box-header{
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          .header-image{
+              width: 128px;
+              height: auto;
+          }
+        }
+        .login_form{
+          .form_input {
+            width: 100%;
+            color: #fff !important;
+
+          }
+        }
+      }
+    }
+  }
+
+  .bg{
+    // border: 1px solid red;
+  }
+
+}

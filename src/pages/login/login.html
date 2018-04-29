@@ -1,0 +1,30 @@
+<ion-content padding>
+  <ion-grid>
+    <ion-row class="bg" justify-content-center>
+      <ion-col col-12 col-md-6 col-lg-4 class="loginBox bg">
+        <mat-card>
+            <div class="box-header">
+                <div mat-card-avatar class="header-image">
+                    <img src="../../assets/imgs/fuse.svg" />
+                </div>
+                <mat-card-title>Sign In to admin</mat-card-title>
+            </div>
+          <form class="login_form" (ngSubmit)="onSubmit(loginForm)" [formGroup]="loginForm" novalidate>
+            <mat-card-content >
+              <mat-form-field class="form_input">
+                <input  matInput placeholder="Username" value="" formControlName="userName">
+              </mat-form-field>
+
+              <mat-form-field class="form_input">
+                <input type="password" matInput placeholder="Password" value="" formControlName="password">
+              </mat-form-field>
+
+              <button mat-raised-button color="primary" class="form_input">Sign In</button>
+            </mat-card-content>
+            
+          </form>
+        </mat-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
