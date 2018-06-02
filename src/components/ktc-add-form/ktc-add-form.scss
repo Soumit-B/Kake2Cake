@@ -1,0 +1,21 @@
+ktc-add-form {
+    .toolbar-background{
+        background: #ffffff;
+    }
+    
+
+    .form-block{
+        /*min-width: 150px;
+        max-width: 500px;*/
+        width: 100%;
+        .form-section{
+            width: 100%;
+            .input-section{
+                width: 100%;
+            }
+            .form-input{
+                margin: 0 10px;
+            }
+        }
+    }
+}

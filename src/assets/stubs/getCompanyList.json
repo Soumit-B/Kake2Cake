@@ -1,0 +1,23 @@
+[{
+    "CompanyID": 1,
+    "CompanyBranch": "BAGUIATI",
+    "CompanyType": "CAKE",
+    "AddreddLine1": "BAGUIATI, JORAMANDIR",
+    "City": "KOLKATA",
+    "CountryID": 1,
+    "StateID": 1,
+    "PinCode": 700056,
+    "CompanyName": "PARIS BAKERY-BAGUIATI"
+},
+{
+    "CompanyID": 2,
+    "CompanyBranch": "Baguiati",
+    "CompanyType": "cake",
+    "AddreddLine1": "Zarda Bangan",
+    "City": "Kolkata",
+    "CountryID": 1,
+    "StateID": 1,
+    "PinCode": 700059,
+    "CompanyName": "Monginis-Baguiati"
+}] 
+

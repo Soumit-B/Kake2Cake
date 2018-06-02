@@ -17,6 +17,12 @@ import { AuthenticationService } from "../../common/services/authentication.serv
 })
 export class DashboardPage {
 
+  /*foods = [
+    {value: 'steak-0', viewValue: 'Steak'},
+    {value: 'pizza-1', viewValue: 'Pizza'},
+    {value: 'tacos-2', viewValue: 'Tacos'}
+  ];*/
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private authService: AuthenticationService, public app: App) {
       this.authService.getinfo().subscribe(data => data);
   }

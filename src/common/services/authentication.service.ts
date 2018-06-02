@@ -28,7 +28,7 @@ export class AuthenticationService{
         this.authToken = authToken;
     }
 
-    private loadUserCredentials = (): void => {
+    public loadUserCredentials = (): void => {
         let authToken = window.localStorage.getItem('authToken');
         this.useCredentials(authToken);
     }
@@ -74,7 +74,7 @@ export class AuthenticationService{
         headers.append('Authorization', 'Bearer ' +this.authToken);
 
         return this.http.get(apiUrl,{headers}).map((res:Response) => {
-            console.log(res.json());
+            // console.log(res.json());
             return res.json()
         });
     }

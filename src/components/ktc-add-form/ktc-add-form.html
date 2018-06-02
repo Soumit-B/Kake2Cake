@@ -1,0 +1,40 @@
+<!-- Generated template for the KtcAddFormComponent component -->
+<div *ngIf="formFields">
+    <form class="form-block" (ngSubmit)="onSubmit(loginForm)" [formGroup]="addForm" novalidate>
+        <section *ngFor="let fieldObj of formFields">
+          <section [ngSwitch]="fieldObj.type">
+
+            <section *ngSwitchCase="'text'" class="form-section">
+              <mat-form-field class="input-section">
+                <input matInput [placeholder]="fieldObj.label" [formControlName]="fieldObj.name">
+              </mat-form-field>
+            </section>
+
+            <section *ngSwitchCase="'checkbox'" class="form-section" formArrayName="{{fieldObj.name}}">
+                <mat-checkbox *ngFor="let chkbox of fieldObj.options" class="form-input" [value]="chkbox.value" (change)="updateCheckBoxControl(chkbox.value, $event.checked, fieldObj.name)" [formControlName]="chkbox.label">{{chkbox.label}}</mat-checkbox>
+            </section>
+
+            <section *ngSwitchCase="'radio'" class="form-section">
+                <label class="example-margin">{{fieldObj.label}}:</label>
+                <mat-radio-group [formControlName]="fieldObj.name">
+                  <mat-radio-button *ngFor="let radbtn of fieldObj.options" class="example-margin" [value]="radbtn.value">{{radbtn.label}}</mat-radio-button>
+                </mat-radio-group>
+            </section>
+
+            <section *ngSwitchCase="'select'" class="form-section">
+                <mat-form-field class="input-section">
+                    <mat-select [placeholder]="fieldObj.label" [formControlName]="fieldObj.name">
+                      <mat-option *ngFor="let opt of fieldObj.options" [value]="opt.value">
+                        {{ opt.viewValue }}
+                      </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </section>
+
+          </section>
+        </section>
+        <section class="form-section">
+          <button mat-raised-button color="primary" (click)="saveEventHandler($event)">{{formData.type}}</button>
+        </section>
+    </form>
+</div>

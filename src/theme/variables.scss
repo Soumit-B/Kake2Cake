@@ -38,8 +38,13 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222
+  dark:       #222,
+  sidemenu-header: #181a1d,
+  hambrg-menu: #2b2e33,
+  menu-active: #319db5,
 );
+
+$menu-width: 190px;
 
 
 // App iOS Variables

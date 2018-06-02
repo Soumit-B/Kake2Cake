@@ -1,0 +1,33 @@
+<!-- Generated template for the KtcTableComponent component -->
+<section class="btn-section">
+    <button mat-raised-button color="primary" (click)="crudEventHandler('add')"><img class="ac-icons" src="../../assets/imgs/add.png" /><span>ADD</span></button>
+</section>
+<section class="data-container">
+  <div class="table-header">
+    <mat-form-field>
+      <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+  </div>
+
+  <div class="table-container mat-elevation-z8">
+
+    <mat-table [dataSource]="dataSource" matSort [class.isMobile]="isMobile">
+      
+      <ng-container *ngFor="let colname of displayedColumns" matColumnDef="{{colname}}">
+        <mat-header-cell *matHeaderCellDef mat-sort-header> {{capitalizeFirstLetter(colname)}} </mat-header-cell>
+        <mat-cell *matCellDef="let row"> 
+          <span class="mobile-label">{{capitalizeFirstLetter(colname)}}:</span>
+          <span *ngIf="colname!='Action'">{{row[colname]}}</span>
+          <a href="javascript:void(0)" (click)="crudEventHandler('edit', row)"><img class="ac-icons" *ngIf="colname=='Action'" src="../../assets/imgs/edit.png" /></a> 
+          <a href="javascript:void(0)" (click)="crudEventHandler('delete', row)"><img class="ac-icons margin-20" *ngIf="colname=='Action'" src="../../assets/imgs/delete.png" /></a> 
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;">
+      </mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+</section>

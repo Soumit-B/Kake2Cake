@@ -1,6 +1,6 @@
 import { Component  } from "@angular/core";
 import { FormControl, FormGroup } from '@angular/forms';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 
 import { HomePage } from "../home/home";
 import { DashboardPage } from "../dashboard/dashboard";
@@ -16,15 +16,23 @@ import { AuthenticationService } from "../../common/services/authentication.serv
 })
 
 export class Login {
-    private loginForm: FormGroup
+    private loginForm: FormGroup;
     private userName: FormControl;
     private password: FormControl;
 
-    constructor(private navCtrl: NavController, private authService: AuthenticationService){
+    constructor(private navCtrl: NavController, private authService: AuthenticationService, public menuCtrl: MenuController){
         this.loginForm = new FormGroup({
             userName: new FormControl(),
             password: new FormControl()
         });
+    }
+
+    ionViewDidEnter() {
+        this.menuCtrl.enable(false);
+    }
+
+    ionViewWillLeave() {
+        this.menuCtrl.enable(true);
     }
 
     public onSubmit = (loginForm: FormGroup): void => {
@@ -32,6 +40,6 @@ export class Login {
             userName : loginForm.value.userName,
             password : loginForm.value.password
         }
-        this.authService.authenticate(userObj).subscribe(data => data ? this.navCtrl.push(DashboardPage) : console.log('Authentication failed') );
+        this.authService.authenticate(userObj).subscribe(data => data ? this.navCtrl.setRoot(DashboardPage) : console.log('Authentication failed') );
     }
 }
