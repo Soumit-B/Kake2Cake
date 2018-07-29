@@ -16,6 +16,7 @@ export class KtcAddFormComponent {
   @Input('formFields') formFields: any;
   @Input('formData') formData: any;
   @Output() saveEvent = new EventEmitter<any>();
+  @Output() updateDropdownEv = new EventEmitter<any>();
 
   private addForm: FormGroup;
   private formControlObj: any = {};
@@ -50,11 +51,18 @@ export class KtcAddFormComponent {
          * This is used only for edit purpose.
          */
 
-        // console.log("ngOnChanges : ",this.formData);
+        console.log("ngOnChanges : ",this.formData);
         if(Object.keys(this.formData.data).length > 0){
-            // console.log(this.formFields);
+            console.log(this.formFields);
             this.formFields.map((fieldObj: any) => {
-                this.addForm.controls[fieldObj.name].setValue(this.formData.data[fieldObj.name]);
+                let fldObj = fieldObj.name.split('.');
+                if(fldObj.length > 1){
+                    //this.addForm.controls[fieldObj.name].setValue(this.formData.data[fieldObj.name]);
+                    console.log(this.addForm.controls);
+                    console.log(fieldObj);
+                }else{
+                    this.addForm.controls[fieldObj.name].setValue(this.formData.data[fieldObj.name]);
+                }
             })
             // this.addForm.controls['productTypeName'].setValue(this.formData.data.ListName);
         }
@@ -73,7 +81,22 @@ export class KtcAddFormComponent {
 
   public saveEventHandler = (event: Event): void => {
       event.preventDefault();
-      this.saveEvent.emit({formData: this.addForm.value});
+      let $thisFormdata = this.formData.data;
+      let $thisAddForm = this.addForm.value;
+
+      /**
+       * assign updated value to the original formdata
+       */
+      Object.keys(this.addForm.value).forEach(function(key) {
+            $thisFormdata[key] = $thisAddForm[key];
+      });
+
+      this.saveEvent.emit({formData: $thisFormdata});
   }
   
+    public matSelectChangeEV = (selectedVal: any): void => {
+        console.log("selectChange : ", selectedVal, this.addForm.controls[selectedVal].value);
+        this.updateDropdownEv.emit({selectedVal, value: this.addForm.controls[selectedVal].value});
+    }
+
 }

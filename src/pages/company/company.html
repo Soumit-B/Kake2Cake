@@ -7,12 +7,30 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Company</ion-title>
+      <button ion-button [menuToggle]="activeMenu">
+          <ion-icon ios="ios-menu" md="md-menu" color="hambrg-menu"></ion-icon>
+      </button>
+    <ion-title>{{pageType}} Company</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content class="add-bg" padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+          <ion-label><h2><strong>Forms</strong> Elements</h2></ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <div class="panel">
+            <ion-list>
+                <ktc-add-form [formFields]="formFields" [formData]="formData" (saveEvent)="saveEventHandler($event)" (updateDropdownEv)="updateDropdownEv($event)"></ktc-add-form>
+            </ion-list>
+        </div>
+      </ion-col>
+    </ion-row>
+</ion-grid>
 </ion-content>

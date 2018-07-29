@@ -12,6 +12,9 @@ import { SharedModule } from "../common/shared.module";
 import { ProductTypePageModule } from "../pages/product-type/product-type.module";
 import { CompanyPageModule } from "../pages/company/company.module";
 import { KtcProductsPageModule } from "../pages/ktc-products/ktc-products.module";
+import { KtcEventPageModule } from "../pages/ktc-event/ktc-event.module";
+import { KtcItemsPageModule } from "../pages/ktc-items/ktc-items.module";
+import { KtcComboPageModule } from "../pages/ktc-combo/ktc-combo.module";
 
 import { MyApp } from './app.component';
 import { Login } from '../pages/login/login';
@@ -36,6 +39,9 @@ import { RegisterMenus } from "../app/registerMenus";
     ProductTypePageModule,
     CompanyPageModule,
     KtcProductsPageModule,
+    KtcEventPageModule,
+    KtcItemsPageModule,
+    KtcComboPageModule,
     IonicModule.forRoot(MyApp,{
       menuType: 'push'
     })

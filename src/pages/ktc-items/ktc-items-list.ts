@@ -3,37 +3,30 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { KtcTableComponent } from "../../components/ktc-table/ktc-table";
 
-import { ICompanyList } from "./company-list.model";
-
 import { BASE_URL, ADMIN_API_LIST } from "../../constants/constant";
 import { KtcBaseComponent } from '../../components/ktc-base/ktc-base';
 import { KtcBaseService } from "../../components/ktc-base/ktc-base.services";
-import { CompanyPage } from "./company";
 
-// import { ProductTypeService } from "./product-type.services";
-
-// import { ProductTypePage } from "./product-type";
+import { KtcItemsPage } from "./ktc-items";
 
 /**
- * Generated class for the ProductTypePage page.
+ * Generated class for the KtcItemsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
 
-
 @Component({
-  selector: 'page-company-list',
-  templateUrl: 'company-list.html'
+  selector: 'page-ktc-items-list',
+  templateUrl: 'ktc-items-list.html',
 })
-export class CompanyListPage extends KtcBaseComponent {
+export class KtcItemsListPage extends KtcBaseComponent {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public ktcBaseService: KtcBaseService) {
-    super(navCtrl, navParams, ktcBaseService);
-    
-    this.getAPIName = ADMIN_API_LIST.GET_COMPANY_LIST;
-    this.deleteAPIName = ADMIN_API_LIST.DELETE_KTC_COMPANY;
+      super(navCtrl, navParams, ktcBaseService);
 
+      this.getAPIName = ADMIN_API_LIST.GET_KTC_ITEMS_LIST;
+      this.deleteAPIName = ADMIN_API_LIST.DELETE_KTC_ITEMS;
   }
 
   ionViewWillEnter(){
@@ -42,18 +35,19 @@ export class CompanyListPage extends KtcBaseComponent {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CompanyListPage');
+    console.log('ionViewDidLoad KtcItemsPage');
   }
 
   public crudEventHandler = (event: any): void => {
-      console.log(event);
-      if(event.eventType == "add" || event.eventType == "edit"){
-          this.navCtrl.push(CompanyPage,{itemID: event.row.ID});
-          // this.navCtrl.setRoot(ProductTypePage);
-      }else{
+    // console.log(event);
+    if(event.eventType == "add" || event.eventType == "edit"){
+        this.navCtrl.push(KtcItemsPage,{itemID: event.row.ID});
+        // this.navCtrl.setRoot(ProductTypePage);
+    }else{
         console.log(event);
         this.deleteEventHandler(event.row);
-      }
-  }
+    }
+}
+
 
 }

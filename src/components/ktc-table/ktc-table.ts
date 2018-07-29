@@ -29,7 +29,7 @@ export class KtcTableComponent {
 
   ngOnChanges(){
     // console.log("ktcTableList : ", this.ktcTableList);
-    this.displayedColumns = this.ktcTableList[0] ? Object.keys(this.ktcTableList[0]) : [];
+    this.displayedColumns = this.ktcTableList instanceof Array ? Object.keys(this.ktcTableList[0]) : [];
     this.displayedColumns.push("Action");
     this.dataSource = new MatTableDataSource(this.ktcTableList);
   }

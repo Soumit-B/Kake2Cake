@@ -2,7 +2,7 @@
 <section class="btn-section">
     <button mat-raised-button color="primary" (click)="crudEventHandler('add')"><img class="ac-icons" src="../../assets/imgs/add.png" /><span>ADD</span></button>
 </section>
-<section class="data-container">
+<section class="data-container" *ngIf="ktcTableList">
   <div class="table-header">
     <mat-form-field>
       <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -31,3 +31,5 @@
     <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
   </div>
 </section>
+
+<section class="empty-container" *ngIf="!ktcTableList">No Record Found</section>

@@ -38,6 +38,10 @@ ktc-table {
         display: none;
       }
 
+      .empty-container{
+          text-align: center;
+      }
+
       @media(max-width: 600px) {
         .mobile-label {
           width: 110px;

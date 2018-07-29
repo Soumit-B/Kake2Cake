@@ -26,7 +26,7 @@ export class MyApp {
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, public menuCtrl: MenuController, public registerMenus: RegisterMenus) {
 
     this.pages = this.registerMenus.listOfTabs();
-    this.activePage = this.pages[3];
+    this.activePage = this.pages[this.pages.length-1];
     this.rootPage = this.activePage['component'];
 
     platform.ready().then(() => {

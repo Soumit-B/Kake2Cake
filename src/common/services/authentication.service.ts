@@ -4,7 +4,7 @@ import 'rxjs/add/operator/map';
 
 import { ILogin } from "../models/login.model";
 
-import { BASE_URL, API_LIST } from "../../constants/constant";
+import { BASE_URL, ADMIN_API_LIST } from "../../constants/constant";
 
 @Injectable()
 
@@ -44,7 +44,7 @@ export class AuthenticationService{
         /*
             'https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA'
         */
-        let apiUrl = BASE_URL.DOMAIN+":"+BASE_URL.PORT+API_LIST.TOKEN;
+        let apiUrl = BASE_URL.DOMAIN+":"+BASE_URL.PORT+ADMIN_API_LIST.TOKEN;
         
         let apiHeaders = new Headers();
         apiHeaders.append('Content-Type', 'application/json');  
@@ -68,7 +68,7 @@ export class AuthenticationService{
     public getinfo = (): any => {
         this.loadUserCredentials();
         
-        let apiUrl = BASE_URL.DOMAIN+":"+BASE_URL.PORT+API_LIST.LOGIN;
+        let apiUrl = BASE_URL.DOMAIN+":"+BASE_URL.PORT+ADMIN_API_LIST.LOGIN;
 
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' +this.authToken);

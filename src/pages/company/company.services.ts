@@ -2,13 +2,13 @@ import { Injectable } from "@angular/core";
 import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { BASE_URL, API_LIST } from "../../constants/constant";
+import { BASE_URL, ADMIN_API_LIST } from "../../constants/constant";
 import { AuthenticationService } from "../../common/services/authentication.service";
 
 
 @Injectable()
 
-export class CompanyService{
+export class KTCCompanyService{
 
     private authToken: String;
     constructor(private http: Http, private authService:AuthenticationService){
@@ -25,8 +25,16 @@ export class CompanyService{
         return this.http.get(apiUrl,{headers}).map((res:Response) => res.json());
     }
 
-    public getProudctTypeList = () : any => {
-        return this.callRestAPI(API_LIST.GET_PRODUCT_TYPE_LIST);
+    public getCountryList = () : any => {
+        return this.callRestAPI("/api/GetCountries");  
+    }
+
+    public getStateList = (countryID) : any => {
+        return this.callRestAPI("/api/GetStates?countryID="+countryID);
+    }
+
+    public getCityList = (stateID: number) : any => {
+        return this.callRestAPI("/api/GetCities?StateID="+stateID);  
     }
     
 }

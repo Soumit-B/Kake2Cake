@@ -23,9 +23,9 @@
 
             <section *ngSwitchCase="'select'" class="form-section">
                 <mat-form-field class="input-section">
-                    <mat-select [placeholder]="fieldObj.label" [formControlName]="fieldObj.name">
-                      <mat-option *ngFor="let opt of fieldObj.options" [value]="opt.value">
-                        {{ opt.viewValue }}
+                    <mat-select [placeholder]="fieldObj.label" (change)="matSelectChangeEV(fieldObj.name)" [formControlName]="fieldObj.name">
+                      <mat-option *ngFor="let opt of fieldObj.options" [value]="opt.id">
+                        {{ opt.name }}
                       </mat-option>
                     </mat-select>
                 </mat-form-field>

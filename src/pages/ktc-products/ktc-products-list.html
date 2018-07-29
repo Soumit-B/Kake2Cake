@@ -10,14 +10,14 @@
       <button ion-button [menuToggle]="activeMenu">
           <ion-icon ios="ios-menu" md="md-menu" color="hambrg-menu"></ion-icon>
       </button>
-      <ion-title>ProductType</ion-title>
+      <ion-title>Products</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-    <div *ngIf="ktcTableList">
+    <div>
       <ktc-table [ktcTableList]="ktcTableList" (crudEvent)="crudEventHandler($event)"></ktc-table>
     </div>
 </ion-content>

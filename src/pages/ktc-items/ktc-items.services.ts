@@ -2,47 +2,44 @@ import { Injectable } from "@angular/core";
 import { Http, Response, Headers, URLSearchParams, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/map';
 
-import { BASE_URL, ADMIN_API_LIST } from "../../constants/constant";
+import { BASE_URL, FIELD_API_LIST } from "../../constants/constant";
 import { AuthenticationService } from "../../common/services/authentication.service";
 
 
 @Injectable()
 
-export class KtcBaseService{
-
+export class KtcItemsService{
+    private _BASE : string = BASE_URL.DOMAIN+":"+BASE_URL.PORT;
     private authToken: String;
     constructor(private http: Http, private authService:AuthenticationService){
         this.authService.loadUserCredentials();
         this.authToken = this.authService.authToken;
     }
 
-    public getTableList = (API_URL: string) : any => {
+    public getProductTypeList = () : any => {
+        let API_URL = this._BASE+FIELD_API_LIST.GET_PRODUCT_TYPE_LIST;
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' +this.authToken);
 
         return this.http.get(API_URL,{headers}).map((res:Response) => res.json());
     }
 
-    public getItemDetails = (API_URL: string, itemID: number): any => {
+    public getProductNamesList = (itemID: number) : any => {
+        let API_URL = this._BASE+FIELD_API_LIST.GET_PRODUCT_NAME_LIST;
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' +this.authToken);
+
         API_URL = API_URL.replace('<itemID>',itemID.toString());
 
         return this.http.get(API_URL,{headers}).map((res:Response) => res.json());
     }
 
-    public InsertOrUpdateData = (API_URL: string, postData: any) : any => {
+    public getCompanyList = () : any => {
+        let API_URL = this._BASE+FIELD_API_LIST.GET_COMPANY_LIST;
         let headers = new Headers();
         headers.append('Authorization', 'Bearer ' +this.authToken);
 
-        return this.http.post(API_URL,postData,{headers}).map((res:Response) => res.json());
-    }
-
-    public deleteData = (API_URL: string, ID: number) : any => {
-        let headers = new Headers();
-        headers.append('Authorization', 'Bearer ' +this.authToken);
-
-        return this.http.post(API_URL+'?ID='+ID,{headers}).map((res:Response) => res.json());
+        return this.http.get(API_URL,{headers}).map((res:Response) => res.json());
     }
     
 }

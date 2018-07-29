@@ -17,7 +17,7 @@
 
 
 <ion-content padding>
-    <div *ngIf="ktcTableList">
+    <div>
       <ktc-table [ktcTableList]="ktcTableList" (crudEvent)="crudEventHandler($event)"></ktc-table>
     </div>
 </ion-content>
