@@ -27,7 +27,7 @@
       <ion-col>
         <div class="panel">
             <ion-list>
-                <ktc-add-form [formFields]="formFields" [formData]="formData" (saveEvent)="saveEventHandler($event)"></ktc-add-form>
+                <ktc-add-form [formFields]="formFields" [formData]="formData" (saveEvent)="saveEventHandler($event)" (updateDropdownEv)="updateDropdownEv($event)" ></ktc-add-form>
             </ion-list>
         </div>
       </ion-col>

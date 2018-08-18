@@ -1,6 +1,6 @@
 export const BASE_URL = {
     DOMAIN: "http://localhost",
-    PORT: "50815"//"8100"
+    PORT: "8100"   //"50815"
 }
 
 export const ADMIN_API_LIST = {
@@ -37,11 +37,13 @@ export const ADMIN_API_LIST = {
     INSERT_KTC_COMBO: '/api/ComboItem/InsertComboItemDetails',
     UPDATE_KTC_COMBO: '/api/ComboItem/UpdateComboItemDetails',
     DELETE_KTC_COMBO: '/api/ComboItem/DeleteComboItemDetails',
-    GET_KTC_COMBO_DETAILS: '/api/ComboItem/GetComboItemDetailsForAdminOnComboID?ID=<itemID>'
+    GET_KTC_COMBO_DETAILS: '/assets/stubs/GetComboItemDetailsForAdminOnComboID.json' /*'/api/ComboItem/GetComboItemDetailsForAdminOnComboID?ID=<itemID>'*/
 }
 
 export const FIELD_API_LIST = {
     GET_PRODUCT_TYPE_LIST: '/api/getProductTypeList',
     GET_PRODUCT_NAME_LIST: '/api/GetProduct?ProductTypeID=<itemID>',
-    GET_COMPANY_LIST: '/api/GetCompanyDetailsForItem'
+    GET_COMPANY_LIST: '/api/GetCompanyDetailsForItem',
+    GET_PRODUCT_TYPE_LIST_FOR_COMBO: '/assets/stubs/GetListForCombo.json',  //'/api/GetListForCombo',
+    GET_PRODUCT_LIST_FOR_COMBO: '/assets/stubs/GetListItemForComboItem.json' //'/api/GetListItemForComboItem?ProductTypeID==<itemID>'
 }

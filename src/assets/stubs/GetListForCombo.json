@@ -1,0 +1,18 @@
+[
+    {
+      "ProductTypeID": 1,
+      "ProductTypeName": "Cake"
+    },
+    {
+      "ProductTypeID": 3,
+      "ProductTypeName": "Chocolate"
+    },
+    {
+      "ProductTypeID": 4,
+      "ProductTypeName": "SoftToy"
+    },
+    {
+      "ProductTypeID": 1014,
+      "ProductTypeName": "Flower"
+    }
+  ]

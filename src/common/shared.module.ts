@@ -11,6 +11,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatSelectModule } from '@angular/material/select';
+import {MatGridListModule} from '@angular/material/grid-list';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AuthenticationService } from "../common/services/authentication.service";
@@ -30,6 +31,7 @@ import { AuthenticationService } from "../common/services/authentication.service
         MatCheckboxModule,
         MatRadioModule,
 		MatSelectModule,
+		MatGridListModule,
 		FormsModule,
 		ReactiveFormsModule
 	],
@@ -44,7 +46,8 @@ import { AuthenticationService } from "../common/services/authentication.service
         MatCardModule,
         MatCheckboxModule,
         MatRadioModule,
-        MatSelectModule,
+		MatSelectModule,
+		MatGridListModule,
 		FormsModule,
 		ReactiveFormsModule
     ],

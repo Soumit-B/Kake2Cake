@@ -31,6 +31,89 @@
                 </mat-form-field>
             </section>
 
+            <section *ngSwitchCase="'other'" class="form-section" [formArrayName]="fieldObj.name">
+                <div *ngIf="fieldObj.items.length">
+                    <section *ngFor="let listRow of fieldObj.items; let parentIndex = index">
+                        <mat-grid-list cols="3" rowHeight="100px" [formGroupName]="parentIndex">
+                            <mat-grid-tile *ngFor="let subFieldObj of fieldObj.options; let childIndex = index;"
+                                [colspan]="subFieldObj.cols"
+                                [rowspan]="subFieldObj.rows"
+                                [style.background]="subFieldObj.color">
+
+                                <section [ngSwitch]="subFieldObj.type">
+
+                                    <section *ngSwitchCase="'text'" class="form-section">
+                                        <mat-form-field class="input-section">
+                                            <input matInput [placeholder]="subFieldObj.label" [formControlName]="subFieldObj.name">
+                                        </mat-form-field>
+                                        </section>
+                            
+                                        <section *ngSwitchCase="'checkbox'" class="form-section" formArrayName="{{subFieldObj.name}}">
+                                            <mat-checkbox *ngFor="let chkbox of subFieldObj.options" class="form-input" [value]="chkbox.value" (change)="updateCheckBoxControl(chkbox.value, $event.checked, subFieldObj.name)" [formControlName]="chkbox.label">{{chkbox.label}}</mat-checkbox>
+                                        </section>
+                            
+                                        <section *ngSwitchCase="'radio'" class="form-section">
+                                            <label class="example-margin">{{fieldObj.label}}:</label>
+                                            <mat-radio-group [formControlName]="subFieldObj.name">
+                                            <mat-radio-button *ngFor="let radbtn of subFieldObj.options" class="example-margin" [value]="radbtn.value">{{radbtn.label}}</mat-radio-button>
+                                            </mat-radio-group>
+                                        </section>
+                            
+                                        <section *ngSwitchCase="'select'" class="form-section">
+                                            <mat-form-field class="input-section">
+                                                <mat-select [placeholder]="subFieldObj.label" (change)="matSelectChangeEV(fieldObj.name+'.'+subFieldObj.name, parentIndex)" [formControlName]="subFieldObj.name">
+                                                <mat-option *ngFor="let opt of subFieldObj.options" [value]="opt.id">
+                                                    {{ opt.name }}
+                                                </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </section>
+                                </section>
+                            </mat-grid-tile>
+                            <mat-grid-tile colspan="1" rowspan="1">
+                                <button mat-mini-fab color="primary" class="font-36" *ngIf="parentIndex+1==fieldObj.items.length" (click)="addComboItem($event)">+</button>
+                                <button mat-mini-fab color="warn" class="font-36" *ngIf="fieldObj.items.length>1" (click)="removeComboItem($event, parentIndex)">-</button>
+                            </mat-grid-tile>
+                        </mat-grid-list>
+                    </section>
+                </div>
+
+                <div *ngIf="!fieldObj.items.length">
+                        <section *ngFor="let subFieldObj of fieldObj.options">
+
+                                <section [ngSwitch]="subFieldObj.type">
+
+                                    <section *ngSwitchCase="'text'" class="form-section">
+                                        <mat-form-field class="input-section">
+                                            <input matInput [placeholder]="subFieldObj.label" [formControlName]="subFieldObj.name">
+                                        </mat-form-field>
+                                        </section>
+                            
+                                        <section *ngSwitchCase="'checkbox'" class="form-section" formArrayName="{{subFieldObj.name}}">
+                                            <mat-checkbox *ngFor="let chkbox of subFieldObj.options" class="form-input" [value]="chkbox.value" (change)="updateCheckBoxControl(chkbox.value, $event.checked, subFieldObj.name)" [formControlName]="chkbox.label">{{chkbox.label}}</mat-checkbox>
+                                        </section>
+                            
+                                        <section *ngSwitchCase="'radio'" class="form-section">
+                                            <label class="example-margin">{{fieldObj.label}}:</label>
+                                            <mat-radio-group [formControlName]="subFieldObj.name">
+                                            <mat-radio-button *ngFor="let radbtn of subFieldObj.options" class="example-margin" [value]="radbtn.value">{{radbtn.label}}</mat-radio-button>
+                                            </mat-radio-group>
+                                        </section>
+                            
+                                        <section *ngSwitchCase="'select'" class="form-section">
+                                            <mat-form-field class="input-section">
+                                                <mat-select [placeholder]="subFieldObj.label" (change)="matSelectChangeEV(fieldObj.name+'.'+subFieldObj.name)" [formControlName]="subFieldObj.name">
+                                                <mat-option *ngFor="let opt of subFieldObj.options" [value]="opt.id">
+                                                    {{ opt.name }}
+                                                </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                        </section>
+                                </section>
+                        </section>
+                </div>
+            </section>
+
           </section>
         </section>
         <section class="form-section">

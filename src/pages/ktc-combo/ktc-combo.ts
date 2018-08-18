@@ -4,6 +4,7 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { KtcBaseComponent } from "../../components/ktc-base/ktc-base";
 import { KtcAddFormComponent } from "../../components/ktc-add-form/ktc-add-form";
 import { KtcBaseService } from "../../components/ktc-base/ktc-base.services";
+import { KtcComboService } from "./ktc-combo.services";
 
 import { ADMIN_API_LIST } from "../../constants/constant";
 
@@ -18,21 +19,30 @@ import { ADMIN_API_LIST } from "../../constants/constant";
 @Component({
   selector: 'page-ktc-combo',
   templateUrl: 'ktc-combo.html',
-  providers: [KtcBaseService]
+  providers: [KtcBaseService, KtcComboService]
 })
 export class KtcComboPage extends KtcBaseComponent {
 
   public formFields: Array<any> = [];
+  public productTypeList: Array<any> = [];
+  public productList: Array<any> = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public ktcBaseService: KtcBaseService) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public ktcBaseService: KtcBaseService, public ktcComboService: KtcComboService) {
     super(navCtrl, navParams, ktcBaseService);
       this.addAPIName = ADMIN_API_LIST.INSERT_KTC_COMBO;
       this.updateAPIName = ADMIN_API_LIST.UPDATE_KTC_COMBO;
       this.getDetailsAPIName = ADMIN_API_LIST.GET_KTC_COMBO_DETAILS;
 
+      this.getProductTypeListForComobo();
+
       this.formFields = [
-        {type: 'text', label: 'Combo Name', name: 'ComboDetails.ComboName'},
-        {type: 'select', label: 'Product Type', name: 'ProductTypeID', options: []}	
+        {type: 'other', label: 'Combo Details', name: 'ComboDetails', items: {}, options:[
+            {type: 'text', label: 'Comboname', name: 'Comboname'}
+        ]},
+        {type: 'other', label: 'Combo List', name: 'comboItemList',items:[{}], options: [
+          {type: 'select', label: 'Product Type', name: 'ProductTypeID', options: this.productTypeList, cols: 1, rows: 1, color: 'lightblue'},
+          {type: 'select', label: 'Product List', name: 'ItemTypeID', options: this.productList, cols: 1, rows: 1, color: 'lightgreen'}
+        ]}
       ];
   }
 
@@ -48,5 +58,35 @@ export class KtcComboPage extends KtcBaseComponent {
       });
     }
   }
+
+  public updateDropdownEv = (updateDropdownEv: any): void => {
+      //console.log(updateDropdownEv);
+      if(updateDropdownEv.selectedVal == 'comboItemList.ProductTypeID'){
+        this.getProductListForComobo(updateDropdownEv.value);
+      }
+  }
+
+  public getProductTypeListForComobo = () => {
+      this.ktcComboService.getProductTypeListForComobo()
+      .subscribe((data) => {
+        if(data.length>0){
+          data.map((obj) => {
+              this.productTypeList.push({id: obj.ProductTypeID, name: obj.ProductTypeName});
+          });
+        } 
+    });
+  }
+
+  public getProductListForComobo = (productID: number) => {
+    this.productList.length = 0;
+    this.ktcComboService.getProductListForComobo(productID)
+    .subscribe((data) => {
+      if(data.length>0){
+        data.map((obj) => {
+            this.productList.push({id: obj.ItemTypeID, name: obj.ItemDetails});
+        });
+      } 
+  });
+}
 
 }

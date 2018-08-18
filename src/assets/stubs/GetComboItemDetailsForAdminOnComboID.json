@@ -1,0 +1,39 @@
+{
+    "ItemDetailsForCombo": [
+      {
+        "ItemTypeID": 3,
+        "ItemDetails": "Black Forest - (PB - Baguati) - Eggless",
+        "ProductTypeID": 1,
+        "ProductTypeName": "Cake",
+        "InStock": false,
+        "Eggless": false
+      },
+      {
+        "ItemTypeID": 5,
+        "ItemDetails": "DairyMilk FruitNut - (PB - Baguati) - Eggless",
+        "ProductTypeID": 3,
+        "ProductTypeName": "Chocolate",
+        "InStock": false,
+        "Eggless": false
+      },
+      {
+        "ItemTypeID": 1007,
+        "ItemDetails": "Fresh Fruit - (PB - Baguati) - Weight - 500",
+        "ProductTypeID": 1,
+        "ProductTypeName": "Cake",
+        "InStock": false,
+        "Eggless": false
+      }
+    ],
+    "ComboDetails": {
+      "ID": 27,
+      "ComboName": "testdfd1",
+      "ProductImage": "test",
+      "Price": 7000.0000,
+      "Description": "testdd",
+      "CreatedBy": "san",
+      "CreatedDate": "2018-07-15T22:40:48.197",
+      "ModifiedBy": null,
+      "ModifiedDate": null
+    }
+  }

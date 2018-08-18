@@ -17,12 +17,12 @@ export class RegisterMenus{
         public listOfTabs = () : Array<any> => {
             return [
                 {title: "Dashboard", component: DashboardPage, icon: "home"},
-                {title: "Product Type", component: ProductTypeListPage, icon: "keypad"},
+                /*{title: "Product Type", component: ProductTypeListPage, icon: "keypad"},
                 {title: "Company", component: CompanyListPage, icon: "keypad"},
                 {title: "Products", component: KtcProductsListPage, icon: "keypad"},
                 {title: "Event", component: KtcEventListPage, icon: "keypad"},
-                {title: "Items", component: KtcItemsListPage, icon: "keypad"},
-                {title: "Combo", component: KtcComboListPage, icon: "keypad"}
+                {title: "Items", component: KtcItemsListPage, icon: "keypad"},*/
+                {title: "Combo", component: KtcComboListPage, icon: "keypad"}   
               ];
         }
 }
